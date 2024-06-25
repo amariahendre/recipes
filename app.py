@@ -3,11 +3,15 @@ import os
 from openai import OpenAI
 from dotenv import load_dotenv, dotenv_values
 
-# Load environment variables from .env file
-config = dotenv_values(".env")
+# Load secrets from secrets.toml
+secrets = st.secrets["openai"]
+api_key = secrets["api_key"]
 
-# Retrieve API key from config
-api_key = config.get("OPENAI_API_KEY")
+# # Load environment variables from .env file
+# config = dotenv_values(".env")
+
+# # Retrieve API key from config
+# api_key = config.get("OPENAI_API_KEY")
 
 if api_key:
     client = OpenAI(api_key= api_key)
