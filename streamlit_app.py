@@ -6,9 +6,6 @@ from openai import OpenAI
 secrets = st.secrets["openai"]
 api_key = secrets["api_key"]
 
-# # Load environment variables from .env file
-# config = dotenv_values(".env")
-
 if api_key:
     client = OpenAI(api_key= api_key)
 
@@ -19,7 +16,7 @@ if api_key:
             prompt += f" Avoid using these ingredients: {excluded_ingredients}."
         try:
             response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=[
                     {
                         "role": "user",
